@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- mybatis sql映射文件 -->
+<!-- namespace：整合到spring之后，要求它的值必须与dao接口的全路径名一致 -->
+<mapper namespace="com.myy.my.qf.web.api.stu.dao">
+    <!-- 方法名与id对应 -->
+    <!-- 注意：sql后不能带分号 -->
+    <!--
+        1) id属性：方法名与id对应
+        2) resultType：配置结果类型，注意：列名要与属性名对应
+    -->
+<!--    <select id="findAll" resultType="com.po.Student">-->
+<!--        select * from stu-->
+<!--    </select>-->
+
+<!--    <select id="getCount" resultType="int">-->
+<!--        select count(*) from stu-->
+<!--    </select>-->
+
+<!--    <select id="findByCondition1" resultType="Student" parameterType="com.po.Student">-->
+<!--        select * from stu where 1=1-->
+<!--        <if test="stuNo!=null">-->
+<!--            and stuNo = #{stuNo}-->
+<!--        </if>-->
+<!--        <if test="stuName!=null">-->
+<!--            and stuName like #{stuName}-->
+<!--        </if>-->
+<!--    </select>-->
+
+<!--    <select id="findByCondition2" resultType="Student" parameterType="java.util.Map">-->
+<!--        select * from stu-->
+<!--        <where>-->
+<!--            <if test="stuNo!=null">-->
+<!--                and stuNo=#{stuNo}-->
+<!--            </if>-->
+<!--            <if test="stuName!=null">-->
+<!--                and stuName like #{stuName}-->
+<!--            </if>-->
+<!--            <choose>-->
+<!--                <when test="stuAge==18">-->
+<!--                    and stuAge = #{stuAge}-->
+<!--                </when>-->
+<!--                <when test="stuAge==28">-->
+<!--                    and stuAge = #{stuAge}-->
+<!--                </when>-->
+<!--                <otherwise>-->
+<!--                    and stuAge is not null-->
+<!--                </otherwise>-->
+<!--            </choose>-->
+<!--        </where>-->
+<!--    </select>-->
+<!--    <select id="findById" parameterType="int" resultType="com.po.Student">-->
+<!--        select * from stu where stuNo=#{stuNo}-->
+<!--    </select>-->
+<!--&lt;!&ndash;    主键自增长&ndash;&gt;-->
+<!--    <insert id="saveStudent2" parameterType="com.po.Student"-->
+<!--            keyColumn="stuNo" keyProperty="stuNo" useGeneratedKeys="true">-->
+<!--         insert into stu(stuName,stuSex,stuAge)values (#{stuName},#{stuSex},#{stuAge})-->
+<!--    </insert>-->
+<!--    &lt;!&ndash;    主键不自增&ndash;&gt;-->
+<!--    <insert id="saveStudent1" parameterType="com.po.Student">-->
+<!--         insert into stu(stuNo,stuName,stuSex,stuAge)values (#{stuNo},#{stuName},#{stuSex},#{stuAge})-->
+<!--    </insert>-->
+
+<!--    <update id="updateStudent" parameterType="com.po.Student">-->
+<!--        update stu set-->
+<!--        stuName=#{stuName},-->
+<!--        stuSex = #{stuSex},-->
+<!--        stuAge = #{stuAge}-->
+<!--        where-->
+<!--        stuNo = #{stuNo}-->
+<!--    </update>-->
+<!--    <delete id="deleteStudent" parameterType="int">-->
+<!--        delete from stu where stuNo=#{stuNo}-->
+<!--    </delete>-->
+    <!--
+       eviction：配置缓存策略
+          LRU(默认)：最近最少使用，移除最长时间不使用的对象
+          FIFO：先进先出，按对象进入缓存的顺序来移除
+          SOFT：软引用，移除其于垃圾回收器状态和软引用规则的对象
+          WEAK：弱引用，更积极地移除基于垃圾收集器状态和弱引用规则的对象
+
+       flushInterval：刷新缓存的时间，指定的是具体的值（不能指定60*100）
+       size：缓存对象的数量，默认是1024
+       readOnly：返回的对象是只读的
+    -->
+<!--    <cache eviction="FIFO"-->
+<!--           flushInterval="6000" size="512" readOnly="true" />-->
+        <cache eviction="FIFO" flushInterval="6000" size="512" readOnly="true"/>
+
+
+</mapper>
